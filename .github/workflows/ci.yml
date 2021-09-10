@@ -35,13 +35,6 @@ jobs:
       # Host a Helm charts repo on GitHub Pages
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.2.1
-        with:
-          # The relative path to the chart-releaser config file
-          #config: # optional
-          # The charts directory
-          charts_dir: charts
-          # The GitHub Pages URL to the charts repo (default: https://<owner>.github.io/<repo>)
-          #charts_repo_url: # optional
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
         if: github.event_name == 'push'
