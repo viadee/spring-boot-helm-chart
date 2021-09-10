@@ -23,21 +23,21 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
-      # 
       - name: Configure Git
         run: |
           git config user.name "$GITHUB_ACTOR"
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
-          ls -al
 
       - name: Install Helm
         uses: azure/setup-helm@v1
         with:
           version: v3.4.0
 
-      # Host a Helm charts repo on GitHub Pages
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.1.0
         env:
