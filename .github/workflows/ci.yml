@@ -34,7 +34,7 @@ jobs:
       
       # Host a Helm charts repo on GitHub Pages
       - name: Run chart-releaser
-        uses: helm/chart-releaser-action@v1.2.1
+        uses: helm/chart-releaser-action@v1.1.0
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
         if: github.event_name == 'push'
