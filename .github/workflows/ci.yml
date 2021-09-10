@@ -31,7 +31,12 @@ jobs:
           git config user.name "$GITHUB_ACTOR"
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
           ls -al
-      
+
+      - name: Install Helm
+        uses: azure/setup-helm@v1
+        with:
+          version: v3.4.0
+
       # Host a Helm charts repo on GitHub Pages
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.1.0
