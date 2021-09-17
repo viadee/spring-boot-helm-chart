@@ -3,5 +3,16 @@ kind: ConfigMap
 metadata:
   name: {{ include "viadee-spring-boot-helm-chart.fullname" . }}
 data:
-  application-helm-plain.yaml:
+  application-helm-plain-values.yaml:
     {{ toYaml .Values.config.plain | indent 4}}
+  application-helm-generated-values.yaml: |-
+    spring.cloud.kubernetes.config.enabled: false
+    spring.cloud.kubernetes.config.enableApi: false
+    spring.cloud.kubernetes.secrets.enabled: true
+    spring.cloud.kubernetes.secrets.enableApi: false
+  {{- if .Values.config.secretRef }}
+    spring.cloud.kubernetes.secrets.paths: 
+      {{- range .Values.config.secretRef }}
+      - /config/properties/secretRef/{{ . }}/
+      {{- end }}
+  {{- end }}

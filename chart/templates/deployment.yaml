@@ -31,6 +31,11 @@ spec:
         - name: properties
           configMap:
             name: {{ include "viadee-spring-boot-helm-chart.fullname" . }}
+        {{- range .Values.config.secretRef }}
+        - name: {{ . }}
+          secret:
+            secretName: {{ . }}
+        {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -56,11 +61,16 @@ spec:
           {{- end }} 
           env:
             - name: SPRING_CONFIG_ADDITIONAL_LOCATION
-              value: "file:/config/properties/application-helm-plain.yaml"
+              value: "file:/config/properties/yaml/application-helm-generated-values.yaml, file:/config/properties/yaml/application-helm-plain-values.yaml"
           volumeMounts:
             - name: properties
-              mountPath: /config/properties/
+              mountPath: /config/properties/yaml/
               readOnly: true
+            {{- range .Values.config.secretRef }}
+            - name: {{ . }}
+              mountPath: /config/properties/secretRef/{{ . }}/
+              readOnly: true
+            {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
