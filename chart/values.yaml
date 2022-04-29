@@ -5,7 +5,7 @@ image:
   tag: ""
 
 config:
-  ## -- Use this property like a applications.yaml. It will override the one in the container.
+  # -- Use this property like an applications.yaml. It will override the one in the container.
   plain: |-
     logging.level.org.*: INFO
     # TODO: move to own application.yaml in a config map which will loaded before the plain config
@@ -17,17 +17,18 @@ config:
         port: 8081
         ssl.enabled: false
         
-  ## -- Name of existing secret. Every key of the secret will be interpreted as property key and the corresponding value as a property value
+  # -- Name of existing secret. Every key of the secret will be interpreted as property key and the corresponding value as a property value
   secretRef:
   #  - example-external-secret-name
 
-  ## -- Key-value pairs for bitnami sealed secrets. The values need to be created with kubeseal cli which is configured for the tearget cluster.
+  # -- Key-value pairs for bitnami sealed secrets. The values need to be created with kubeseal cli which is configured for the tearget cluster.
   sealedSecret:
     enabled: false
     mode: cluster-wide #namespace-wide #strict
     keyEncryptedValuePair:
     #  example: AgB7SdvLqTxyax8pdoa1yPhfEGrcTq
 
+# -- toogle if liveness and readiness probes are active 
 probesEnabled: true
 
 imagePullSecrets: []
