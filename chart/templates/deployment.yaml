@@ -36,6 +36,11 @@ spec:
           secret:
             secretName: {{ . }}
         {{- end }}
+        {{- if .Values.config.sealedSecret.enabled }}
+        - name: secret-properties
+          secret:
+            secretName: {{ include "viadee-spring-boot-helm-chart.fullname" . }} 
+        {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -67,8 +72,13 @@ spec:
               mountPath: /config/properties/yaml/
               readOnly: true
             {{- range .Values.config.secretRef }}
-            - name: {{ . }}
+            - name: {{.  }}
               mountPath: /config/properties/secretRef/{{ . }}/
+              readOnly: true
+            {{- end }}
+            {{- if .Values.config.sealedSecret.enabled }}
+            - name: secret-properties
+              mountPath: /config/properties/secret/
               readOnly: true
             {{- end }}
           resources:

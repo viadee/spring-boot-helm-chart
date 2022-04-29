@@ -1,4 +1,8 @@
-replicaCount: 1
+image:
+  repository: demo-springboot-k8
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
 
 config:
   ## -- Use this property like a applications.yaml. It will override the one in the container.
@@ -12,21 +16,25 @@ config:
       server:
         port: 8081
         ssl.enabled: false
-  ## --  Name of existing secret. Every key of the secret will be interpreted as property key and the corresponding value as a property value
-  secretRef: []
+        
+  ## -- Name of existing secret. Every key of the secret will be interpreted as property key and the corresponding value as a property value
+  secretRef:
+  #  - example-external-secret-name
+
+  ## -- Key-value pairs for bitnami sealed secrets. The values need to be created with kubeseal cli which is configured for the tearget cluster.
+  sealedSecret:
+    enabled: false
+    mode: cluster-wide #namespace-wide #strict
+    keyEncryptedValuePair:
+    #  example: AgB7SdvLqTxyax8pdoa1yPhfEGrcTq
 
 probesEnabled: true
-
-image:
-  repository: demo-springboot-k8
-  pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
 
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+replicaCount: 1
 serviceAccount:
   # Specifies whether a service account should be created
   create: true
@@ -38,10 +46,12 @@ serviceAccount:
 
 podAnnotations: {}
 
-podSecurityContext: {}
+podSecurityContext:
+  {}
   # fsGroup: 2000
 
-securityContext: {}
+securityContext:
+  {}
   # capabilities:
   #   drop:
   #   - ALL
@@ -55,7 +65,8 @@ service:
 
 ingress:
   enabled: false
-  annotations: {}
+  annotations:
+    {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
@@ -66,7 +77,8 @@ ingress:
   #    hosts:
   #      - chart-example.local
 
-resources: {}
+resources:
+  {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
