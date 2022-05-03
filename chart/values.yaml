@@ -7,16 +7,8 @@ image:
 config:
   # -- Use this property like an applications.yaml. It will override the one in the container.
   plain: |-
-    logging.level.org.*: INFO
-    # TODO: move to own application.yaml in a config map which will loaded before the plain config
-    management:
-      endpoint.health:
-        show-details: always
-        probes.enabled: true
-      server:
-        port: 8081
-        ssl.enabled: false
-        
+    #logging.level.org.*: INFO
+
   # -- Name of existing secret. Every key of the secret will be interpreted as property key and the corresponding value as a property value
   secretRef:
   #  - example-external-secret-name
