@@ -6,7 +6,7 @@
   - plain application yaml as a multiline value
   - encrypted values
   - load properties from existing secret
-- pre-configured readinessProbes and livenessProbes on not exposed port
+- pre-configured readinessProbes and livenessProbes
 - expose metrics for prometheus and collect them
 
 ## seal secret values
