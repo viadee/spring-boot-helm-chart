@@ -1,6 +1,6 @@
 # viadee-spring-boot-helm-chart
 
-![Version: 0.3.0](https://img.shields.io/badge/Version-0.3.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
+![Version: 0.4.1](https://img.shields.io/badge/Version-0.4.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
 
 A Helm chart for deploying spring boot applications on k8s.
 
@@ -13,7 +13,7 @@ A Helm chart for deploying spring boot applications on k8s.
 | autoscaling.maxReplicas | int | `100` |  |
 | autoscaling.minReplicas | int | `1` |  |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
-| config.plain | string | `"logging.level.org.*: INFO\n# TODO: move to own application.yaml in a config map which will loaded before the plain config\nmanagement:\n  endpoint.health:\n    show-details: always\n    probes.enabled: true\n  server:\n    port: 8081\n    ssl.enabled: false\n    "` | Use this property like an applications.yaml. It will override the one in the container. |
+| config.plain | string | `"#logging.level.org.*: INFO"` | Use this property like an applications.yaml. It will override the one in the container. |
 | config.sealedSecret | object | `{"enabled":false,"keyEncryptedValuePair":null,"mode":"cluster-wide"}` | Key-value pairs for bitnami sealed secrets. The values need to be created with kubeseal cli which is configured for the tearget cluster. |
 | config.secretRef | string | `nil` | Name of existing secret. Every key of the secret will be interpreted as property key and the corresponding value as a property value |
 | fullnameOverride | string | `""` |  |
