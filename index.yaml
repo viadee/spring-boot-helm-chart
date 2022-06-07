@@ -1,5 +1,16 @@
 apiVersion: v1
 entries:
+  spring-boot-helm-chart:
+  - apiVersion: v2
+    appVersion: "1.2"
+    created: "2022-06-07T06:12:49.76256948Z"
+    description: A Helm chart for deploying spring boot applications on k8s.
+    digest: 755858d2c67ccb485e234828e16fd521ac6e9b7c38db3bd653264b8f311ecbed
+    name: spring-boot-helm-chart
+    type: application
+    urls:
+    - https://github.com/viadee/spring-boot-helm-chart/releases/download/spring-boot-helm-chart-0.5.0/spring-boot-helm-chart-0.5.0.tgz
+    version: 0.5.0
   viadee-spring-boot-helm-chart:
   - apiVersion: v2
     appVersion: latest
@@ -31,4 +42,4 @@ entries:
     urls:
     - https://github.com/viadee/spring-boot-helm-chart/releases/download/viadee-spring-boot-helm-chart-0.2.0/viadee-spring-boot-helm-chart-0.2.0.tgz
     version: 0.2.0
-generated: "2022-06-06T10:04:41.75365463Z"
+generated: "2022-06-07T06:12:49.762580881Z"
