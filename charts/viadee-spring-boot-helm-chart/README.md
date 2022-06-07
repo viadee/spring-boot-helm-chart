@@ -1,6 +1,6 @@
 # viadee-spring-boot-helm-chart
 
-![Version: 0.4.1](https://img.shields.io/badge/Version-0.4.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
+![Version: 0.5.0](https://img.shields.io/badge/Version-0.5.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.2](https://img.shields.io/badge/AppVersion-1.2-informational?style=flat-square)
 
 A Helm chart for deploying spring boot applications on k8s.
 
@@ -18,7 +18,7 @@ A Helm chart for deploying spring boot applications on k8s.
 | config.secretRef | string | `nil` | Name of existing secret. Every key of the secret will be interpreted as property key and the corresponding value as a property value |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
-| image.repository | string | `"demo-springboot-k8"` |  |
+| image.repository | string | `"public.ecr.aws/viadee/k8s-demo-app"` |  |
 | image.tag | string | `""` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |

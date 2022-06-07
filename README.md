@@ -8,11 +8,24 @@
   - load properties from existing secret
 - pre-configured readinessProbes and livenessProbes
 
-## seal secret values
+## How to install the chart
+
+The helm chart can be installed through a helm chart repository hosted on a github page in this repository. To install follow the next steps:
 
 ```shell
-$ echo -n "superSecretPassword" | kubeseal --raw --scope cluster-wide
+helm repo add viadee https://viadee.github.io/spring-boot-helm-chart
+helm install <release-name> viadee/spring-boot-helm-chart
 ```
+
+## Uninstalling the Chart
+
+To uninstall/delete the my-release deployment:
+
+```shell
+helm delete my-release
+```
+
+The command removes all the Kubernetes components associated with the chart and deletes the release.
 
 ## prerequisite
 
@@ -29,3 +42,9 @@ $ echo -n "superSecretPassword" | kubeseal --raw --scope cluster-wide
 3. locally
 
 - [kubeseal cli](https://github.com/bitnami-labs/sealed-secrets#homebrew)
+
+## seal secret values example
+
+```shell
+$ echo -n "superSecretPassword" | kubeseal --raw --scope cluster-wide
+```

@@ -1,5 +1,5 @@
 image:
-  repository: demo-springboot-k8
+  repository: public.ecr.aws/viadee/k8s-demo-app
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
